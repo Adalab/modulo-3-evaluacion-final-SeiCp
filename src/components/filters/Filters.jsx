@@ -1,42 +1,33 @@
-function Filters({ psearchName, psetSearchName, pcities, psetFilterLocation, pfilterLocation }) {
-
-
-    const handleName = (ev) => {
-        ev.preventDefault();
-        psetSearchName(ev.target.value);
-
-    }
-
-    const handleLocation = (ev) => {
-        ev.preventDefault();
-        psetFilterLocation(ev.target.value)
-    }
-
+function Filters({ filterName, handleFilterName }){
+    
+    const handleInput = (ev) => {
+        handleFilterName(ev.target.value);
+      };
+    
     return (
-        <form>
-            <input
-                className="header__search"
-                autoComplete="off"
-                type="search"
-                name="search"
-                placeholder="Filtrar contactos por nombre"
-                value={psearchName}
-                onChange={handleName}
+    <form className="filters">
+        <label>
+            Busca por personaje:
+            <input type="text" placeholder="Harry, Hermione..." 
+            value={filterName} onChange={handleInput}
             />
+        </label>
+        
+        <label>
+        Selecciona la casa:
+        <select>
+          <option value="">Todas</option>
+          <option value="Gryffindor">Gryffindor</option>
+          <option value="Slytherin">Slytherin</option>
+          <option value="Ravenclaw">Ravenclaw</option>
+          <option value="Hufflepuff">Hufflepuff</option>
+        </select>
+      </label>
+    
+    </form>
 
-            <select
-                name="cities" id="cities"
-                value={pfilterLocation}
-                onChange={handleLocation}>
-                <option value="">Todos</option>
-                {pcities.map((city, index) =>
-                    <option key={index} value={city}> {city}</option>
-                )}
-            </select>
-
-
-        </form>
-    )
+    );
 
 }
-export default Filters;  
+
+export default Filters;

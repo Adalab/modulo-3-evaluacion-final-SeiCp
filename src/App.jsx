@@ -1,58 +1,47 @@
 import './styles/App.scss';
 import Header from './components/layout/Header';
-import ListContacts from './components/contact/ListContacts';
+import CharacterList from './components/contact/CharacterList';
 import Filters from './components/filters/Filters';
-import DetailContact from './components/contact/DetailContact';
-import { useEffect, useState } from 'react';
-import { Routes, Route } from 'react-router';
-import Landing from './components/layout/Landing';
+import CharacterDetail from './components/contact/CharacterDetail';
+import { useState, useEffect } from 'react';
 
-function App() {
+function App(){
 
-  const [contactsList, setContactsList] = useState([]);
-  const [searchName, setSearchName] = useState("");
-  const [filterLocation, setFilterLocation] = useState("");
+  const [charactersList, setCharactersList] = useState([]);
 
+  useEffect(()=>{
+    //lo que necesito que hagas cuando pinto el componente
+    fetch("https://hp-api.onrender.com/api/characters")
+    .then(response => response.json())
+    .then(data=>{
+      setCharactersList(data);
+    })
 
-  useEffect(() => {
-    //que quiero que hagas
-    fetch("https://beta.adalab.es/curso-intensivo-fullstack-recursos/apis/contacts-v2/contacts.json")
-      .then(response => response.json())
-      .then(data => {
-        setContactsList(data);
-      })
   }, [])
 
-  const cities = [...new Set(contactsList.map(item => item.location))];
-  console.log(cities);
+  const [filterName, setFilterName] = useState('');
 
-  //Filtro sobre mi listado 
-  const filteredList = contactsList
-    .filter(
-      item => item.name.toLowerCase().includes(searchName.toLowerCase()))
-    .filter(
-      item => item.location === filterLocation || filterLocation === "")
-    ;
-
-
-  return (
-    <div className="page">
-      <Header />
-      <Routes>
-        <Route index element={
-          <>
-            {/*  <Landing psearchName={searchName} psetSearchName={setSearchName} pcities={cities} pfilterLocation={filterLocation} psetFilterLocation={setFilterLocation} pcontactsList={filteredList} > </Landing> */}
-            <Filters psearchName={searchName} psetSearchName={setSearchName} pcities={cities} pfilterLocation={filterLocation} psetFilterLocation={setFilterLocation} />
-            <ListContacts pcontactsList={filteredList} />          </>
-
-        } />
-        <Route path="/detail/:name" element={<DetailContact pcontactsList={contactsList}></DetailContact>} />
-        <Route path='*' element={<h1>Página no encontrada</h1>} />
-      </Routes>
-
-
-    </div>
+  const filteredCharacters = charactersList.filter((character) =>
+    character.name.toLowerCase().includes(filterName.toLowerCase())
   );
+
+
+  return(
+
+    <div className="app">
+    <Header />
+    <main>
+      <Filters 
+      filterName={filterName}
+      handleFilterName={setFilterName}
+      />
+      <CharacterList pcharactersList={filteredCharacters}/>
+    </main>
+  </div>
+
+  );
+
 }
+
 
 export default App;

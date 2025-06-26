@@ -11,9 +11,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -22,6 +24,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -33,10 +36,48 @@
   }
 }
 
-.card {
-  padding: 2em;
+.app {
+  background-color: #808080;
 }
 
-.read-the-docs {
-  color: #888;
+.character__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  list-style: none;
+  padding: 2rem 0;
+
+  .character__card {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    padding: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+
+    .character__image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .character__info {
+      background-color: #d4af37;
+      color: white;
+      padding: 0.5rem;
+
+      .character__name {
+        margin: 0;
+        font-weight: bold;
+        font-size: 1rem;
+      }
+
+      .character__species {
+        margin: 0;
+        font-size: 0.9rem;
+        text-transform: lowercase;
+      }
+    }
+  }
 }

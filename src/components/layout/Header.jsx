@@ -3,10 +3,10 @@ function Header() {
 
     return (
         <header className="header">
-            <h1 className="header__title">Mi agenda de contactos</h1>
+            <img src="/LogoHarry.png" alt="Harry Potter Logo" />
 
         </header>
     );
 }
 
-export default Header
+export default Header;

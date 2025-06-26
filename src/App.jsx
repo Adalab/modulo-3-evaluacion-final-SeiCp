@@ -8,6 +8,9 @@ import { useState, useEffect } from 'react';
 function App(){
 
   const [charactersList, setCharactersList] = useState([]);
+  const [filterName, setFilterName] = useState('');
+  const [filterHouse, setFilterHouse] = useState ('');
+
 
   useEffect(()=>{
     //lo que necesito que hagas cuando pinto el componente
@@ -19,12 +22,16 @@ function App(){
 
   }, [])
 
-  const [filterName, setFilterName] = useState('');
-
+  const house = [...new Set ( charactersList.map(item => item.house))];
+  console.log (house)
+  
   const filteredCharacters = charactersList.filter((character) =>
-    character.name.toLowerCase().includes(filterName.toLowerCase())
-  );
+    character.name.toLowerCase().includes(filterName.toLowerCase()))
+    .filter(item => item.house === filterHouse || filterHouse === "")
+  
+  ;
 
+  
 
   return(
 
@@ -33,7 +40,7 @@ function App(){
     <main>
       <Filters 
       filterName={filterName}
-      handleFilterName={setFilterName}
+      handleFilterName={setFilterName} phouse = {house} pfilterHouse={setFilterHouse} psetFilterHouse={setFilterHouse}
       />
       <CharacterList pcharactersList={filteredCharacters}/>
     </main>

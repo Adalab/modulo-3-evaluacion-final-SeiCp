@@ -3,9 +3,9 @@ import CharacterCard from './CharacterCard';
 function CharacterList({ pcharactersList= [] }) {
     if (pcharactersList.length === 0) {
         return (
-          <p className="no-results">
+          <h2 className="no-results">
             El mago que está buscando está apagado o fuera de cobertura. ¡Vuelva a intentarlo!
-          </p>
+          </h2>
         );
       }
 

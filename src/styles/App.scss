@@ -12,32 +12,9 @@
   transition: filter 300ms;
 }
 
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
 .app {
-  background-color: #808080;
+  background-color: #ffffff;
+  padding: 2rem 4rem;
 }
 
 .character__list {
@@ -98,7 +75,7 @@
 }
 
 .filters__label {
-  color: white;
+  color: rgb(129, 118, 118);
   font-size: 1rem;
   font-weight: 500;
   width: 180px; // fija ancho para que todo se alinee
@@ -111,7 +88,7 @@
   font-size: 1rem;
   border: 2px solid #d4af37;
   background-color: transparent;
-  color: white;
+  color: rgb(128, 112, 112);
   border-radius: 0;
   max-width: 100%;
 }
@@ -187,10 +164,15 @@
       }
     }
   }
+
+  .detail__house-icon {
+    max-width: 40px;
+  }
+
 }
 
 .no-results {
-  color: white;
+  color: #d4af37;
   text-align: center;
   margin-top: 2rem;
   font-size: 1.2rem;

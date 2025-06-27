@@ -12,9 +12,9 @@ function Filters({ filterName, handleFilterName, phouse, psetFilterHouse, pfilte
     
 
     return (
-        <form className="filters">
+        <form className="filters" onSubmit={(ev) => ev.preventDefault()}>
         <div className="filters__group">
-          <label className="filters__label">Busca por personaje:</label>
+          <label className="filters__label">Busca a tu mago fav:</label>
           <input
             type="text"
             className="filters__input"

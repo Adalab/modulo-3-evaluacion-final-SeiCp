@@ -10,10 +10,10 @@ function CharacterDetail({ pcharactersList }){
     return (
 
         <section className="detail">
-           
 
         <div className="detail__card">
-        <button className="btn-back" onClick={() => navigate(-1)}>← Volver</button>
+          <button className="btn-back" onClick={() => navigate(-1)}>← Volver</button>
+          
           <img src={character.image} alt={character.name} />
           <div className="detail__info">
             <h2> {character.name}</h2>
@@ -21,6 +21,16 @@ function CharacterDetail({ pcharactersList }){
             <p> Especie: {character.species}</p>
             <p> Género: {character.gender}</p>
             <p> Casa: {character.house || 'Desconocida'}</p>
+
+            {character.house && (
+            <img
+              src={`/images/${character.house.toLowerCase()}.png`}
+              alt={`Escudo de ${character.house}`}
+              className="detail__house-icon"
+            />
+          )}
+
+
           </div>
         </div>
       </section>

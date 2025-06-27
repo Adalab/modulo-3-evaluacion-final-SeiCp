@@ -1,4 +1,4 @@
-function Filters({ filterName, handleFilterName, phouse, psetFilterHouse, pfilterhouse }) {
+function Filters({ filterName, handleFilterName, phouse, psetFilterHouse, pfilterHouse }) {
     
     const handleInput = (ev) => {
         ev.preventDefault();
@@ -13,31 +13,32 @@ function Filters({ filterName, handleFilterName, phouse, psetFilterHouse, pfilte
 
     return (
         <form className="filters">
-            <label>
-                Busca por personaje:
-                <input 
-                type="text" 
-                placeholder="Harry, Hermione..." 
-                value={filterName} 
-                onChange={handleInput}
-            />
-            </label>
-        
-            <label>
-                Selecciona la casa:
-                <select 
-                name="house" 
-                id="house"
-                value={pfilterhouse}
-                onChange={handleHouse}
-                >
-                <option value="">Todas</option>
-                {phouse.map((house, index)=> (
-                <option key={index} value={house}> {house} </option>
-                ))}
-                </select>
-            </label>
-        </form>
+        <div className="filters__group">
+          <label className="filters__label">Busca por personaje:</label>
+          <input
+            type="text"
+            className="filters__input"
+            value={filterName}
+            onChange={(ev) => handleFilterName(ev.target.value)}
+          />
+        </div>
+      
+        <div className="filters__group">
+          <label className="filters__label">Selecciona la casa:</label>
+          <select
+            className="filters__input"
+            value={pfilterHouse}
+            onChange={(ev) => psetFilterHouse(ev.target.value)}
+          >
+            <option value="">Todas</option>
+            {phouse.map((house, index) => (
+              <option key={index} value={house}>
+                {house}
+              </option>
+            ))}
+          </select>
+        </div>
+      </form>
     );
 }
 

@@ -81,3 +81,117 @@
     }
   }
 }
+
+.filters {
+  max-width: 600px;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.filters__group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.filters__label {
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  width: 180px; // fija ancho para que todo se alinee
+  text-align: right; // alineación al final
+}
+
+.filters__input {
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 2px solid #d4af37;
+  background-color: transparent;
+  color: white;
+  border-radius: 0;
+  max-width: 100%;
+}
+
+.filters__input::placeholder {
+  color: #ccc;
+}
+
+.detail {
+  padding: 4rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
+  .detail__card {
+    position: relative;
+    background-color: #3b0000;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    padding: 2rem 3rem;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    min-width: 700px;
+    max-width: 90vw;
+  }
+
+  .btn-back {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+      opacity: 0.8;
+    }
+  }
+
+  img {
+    max-width: 250px;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  }
+
+  .detail__info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: white;
+    }
+
+    p {
+      margin: 0.5rem 0;
+      font-weight: 500;
+      color: white;
+
+      .icon {
+        margin-left: 0.5rem;
+        font-size: 0.9rem;
+        color: white; // Iconos blancos minimalistas
+      }
+    }
+  }
+}
+
+.no-results {
+  color: white;
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+}
